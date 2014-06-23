@@ -51,11 +51,3 @@ foreach($shortURLs as $shortURL){
 //echo "<br />" . $csv_output;
 
 ?>
-
-<form action='export.php' method='post' name='frm'>
-<input type="hidden" value="<?php echo $csv_output; ?>" name="csv_output">
-</form>
-
-<script language="JavaScript">
-document.frm.submit();
-</script>

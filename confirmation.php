@@ -1,3 +1,5 @@
+<?php include "upload_file.php" ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>URL Finder</title>
+    <title>URL Finder - Confirmation</title>
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
@@ -19,23 +21,22 @@
   <div class="site-wrapper-inner">
     <div class="cover-container">
       <div class="inner cover">
-        <h1 class="cover-heading">Choose file to upload and convert</h1><br />
+        <h1 class="cover-heading">Success!!!</h1><br />
         
-        <form role="form" action="confirmation.php" method="post" enctype="multipart/form-data" class="form-inline">
-            <div class="form-group" style="margin-left:100px">
-                <input type="file" name="file" id="file">
-            </div>
-	
-			<br /><br /><br />
-            
-            <div class="row">
-            	<button class="btn btn-lg btn-primary" name="submit" type="submit">Submit</button>
-            </div>
-    	</form>
+        <a class="btn btn-primary btn-lg active" role="button" href="index.php">Upload Another File</a>
+        
       </div>
     </div>
   </div>
 </div>
+
+<form action='export.php' method='post' name='frm'>
+<input type="hidden" value="<?php echo $csv_output; ?>" name="csv_output">
+</form>
+
+<script language="JavaScript">
+document.frm.submit();
+</script>
 
 </body>
 </html>
