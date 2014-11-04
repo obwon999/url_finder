@@ -41,10 +41,12 @@ class GetHeaders{
 			$curlError = curl_error($ch[$i]);
 			
 			if($curlError == "") {
+				// If no errors, response header info is stored in array
 				$this->headResult[$i] = curl_getinfo($ch[$i]);		
 			} else {
 				$this->headResult[$i] = "ERROR";
-				//print "Curl error on handle $i: $curlError\n";
+				
+				// Store errors in array
 				$this->errors[$url] = "Curl error on handle $i: $curlError"; 
 			}
 			
