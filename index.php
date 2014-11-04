@@ -21,7 +21,7 @@
       <div class="inner cover">
         <h1 class="cover-heading">Choose file to upload and convert</h1><br />
         
-        <form role="form" action="confirmation.php" method="post" enctype="multipart/form-data" class="form-inline">
+        <form role="form" action="processURLs.php" method="post" enctype="multipart/form-data" class="form-inline">
             <div class="form-group" style="margin-left:100px">
                 <input type="file" name="file" id="file">
             </div>

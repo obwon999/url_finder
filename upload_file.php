@@ -12,18 +12,23 @@ if ($_FILES["file"]["error"] > 0) {
 $fileLoc = $_FILES["file"]["tmp_name"];
 
 function expandShortUrl($url) {
-	$headers = get_headers($url, 1);
- 	
-	$loc = $headers['Location'];
-	$value;
-	
-	if(is_array($loc)){
-		$value = $loc[0];	
+	if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+    	echo $url . "<br />";
+		return false;
 	} else {
-		$value = $loc;	
+		$headers = get_headers($url, 1);
+		
+		$loc = $headers['Location'];
+		$value;
+		
+		if(is_array($loc)){
+			$value = $loc[0];	
+		} else {
+			$value = $loc;	
+		}
+		
+		return $value;
 	}
-	
-	return $value;
 }
 
 function readCSV($csvFile){
@@ -49,5 +54,6 @@ foreach($shortURLs as $shortURL){
 }
 
 //echo "<br />" . $csv_output;
+
 
 ?>

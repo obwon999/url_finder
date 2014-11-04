@@ -9,7 +9,8 @@
 
 <?php
 
-$shortURL = "http://go.microsoft.com/fwlink/?LinkId=294710&clcid=0x412#TXT";
+$shortURL = "http://go.microsoft.com/fwlink/?LinkID=509980";
+//$shortURL = "http://www.google.com";
 $longURL = expandShortUrl($shortURL);
 
 function expandShortUrl($url) {
@@ -17,6 +18,7 @@ function expandShortUrl($url) {
 	return $headers['Location'];
 }
 
+echo "<br /><br />";
 echo "SHORT: " . $shortURL . "<br />";
 echo "FULL: " . $longURL . "<br /><br />";
 
