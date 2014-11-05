@@ -110,10 +110,15 @@ class GetHeaders{
 		
 		$headers = get_headers($url, 1);
 		
-		if(is_array($headers['Location'])){
-			$finalURL = $headers['Location'][0];
+		// Getting Undefined index error for $headers['Location']
+		if($headers){
+			if(is_array($headers['Location'])){
+				$finalURL = $headers['Location'][0];
+			} else{
+				$finalURL = $headers['Location'];
+			}
 		} else{
-			$finalURL = $headers['Location'];
+			$finalURL = "URL request failed";	
 		}
 		
 		return $finalURL;
