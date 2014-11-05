@@ -3,10 +3,7 @@
 class GetHeaders{
 	
 	private $headResult;
-	public $urlResult;
-	public $bothResults;
-	//public $results;
-	
+	public $urlResults;	
 	public $errors;
 	
 	public $errorValues = array(
@@ -54,7 +51,7 @@ class GetHeaders{
 			if($curlError == "") {
 				// If no errors, response header info is stored in array
 				
-				$this->bothResults[] = $this->parseURL($url, curl_getinfo($ch[$i]));
+				$this->urlResults[] = $this->parseURL($url, curl_getinfo($ch[$i]));
 					
 			} else {
 				
@@ -73,25 +70,21 @@ class GetHeaders{
 	}
 	
 	private function parseURL($url, $curlArr) {
-		$result['o_url'] = $url;
+		$result['org_url'] = $url;
 		
 		if(is_array($curlArr)){
 			if(array_key_exists('url', $curlArr)){
 				if($this->errorCheck($curlArr['url'])){
-					$result['r_url'] = $this->secondCall($url);	
+					$result['ret_url'] = $this->secondCall($url);	
 				} else{
-					$result['r_url2'] = $curlArr['url'];	
+					$result['ret_url'] = $curlArr['url'];	
 				}
 			} else{
-				$result['r_url3'] = "No URL Returned";	
+				$result['ret_url'] = "No URL Returned";	
 			}
 		} else{
-			$result['r_url4'] = $head;
+			$result['ret_url'] = $head;
 		}
-		
-		//echo "<pre>";
-		//print_r($result);
-		//echo "</pre>";
 		
 		return $result;
 	}

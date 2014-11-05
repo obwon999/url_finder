@@ -1,19 +1,19 @@
 <?php
 /*
- This file will generate our CSV table. There is nothing to display on this page, it is simply used
- to generate our CSV file and then exit. That way we won't be re-directed after pressing the export
- to CSV button on the previous page.
-*/
+	This file will generate our CSV table. There is nothing to display on this page, it is simply used
+	to generate our CSV file and then exit. That way we won't be re-directed after pressing the export
+	to CSV button on the previous page.
 
-// Set the delimeter, ',' for CSV or '\t' for TSV
-// $delimeter = '\t'; ***NEED to update to handle values with commas in them!!!
+	Set the delimeter, ',' for CSV or '\t' for TSV
+	$delimeter = '\t'; ***NEED to update to handle values with commas in them!!!
+*/
 
 class ExportURLs{
 	
 	public $headResult;
 	public $urlResult;
 
-	function __construct($shortArr, $longArr){
+	function __construct($urlsArr){
 
 		//First we'll generate an output variable called out. It'll have all of our text for the CSV file.
 		$out = '';
@@ -26,15 +26,9 @@ class ExportURLs{
 		
 		$out .= $csv_hdr;
 		
-		if(count($shortArr) == count($longArr)){
-			foreach($shortArr as $i => $url){
-				$out .= $url . ", " . $longArr[$i] . "\n";	
-			}
+		foreach($urlsArr as $urls){
+			$out .= $urls['org_url'] . ", " . $urls['ret_url'] . "\n";
 		}
-
-		/*if (isset($_POST['csv_output'])) {
-			$out .= $_POST['csv_output'];
-		}*/
 		
 		//Now we're ready to create a file. This method generates a filename based on the current date & time.
 		$filename = $filename_prefix."_".date("Y-m-d_H-i",time());
