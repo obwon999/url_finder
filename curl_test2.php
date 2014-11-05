@@ -1,6 +1,7 @@
 <?php
 
 // with curl_multi, you only have to wait for the longest-running request
+
 $urls = array(
   "http://google.com",
   "http://imdb.com",
@@ -9,7 +10,8 @@ $urls = array(
   "http://go.microsoft.com/fwlink/?LinkId=401560",
   "http://go.microsoft.com/fwlink/?LinkID=509980",
   "http://www.bing.com/offers/?location=Phoenix",
-  "http://go.microsoft.com/fwlink/?LinkId=400436"
+  "http://go.microsoft.com/fwlink/?LinkId=400436",
+  "http://go.microsoft.com/fwlink/?LinkId=513501"
 );
 
 // Create get requests for each URL
@@ -18,6 +20,7 @@ foreach($urls as $i => $url)
 {
 	$ch[$i] = curl_init($url);
 	curl_setopt($ch[$i], CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch[$i], CURLINFO_HEADER_OUT, 1);
 	curl_setopt($ch[$i], CURLOPT_HEADER, 1);
 	curl_setopt($ch[$i], CURLOPT_NOBODY, 1);
 	curl_setopt($ch[$i], CURLOPT_FOLLOWLOCATION, 1);
